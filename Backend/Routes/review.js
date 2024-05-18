@@ -5,7 +5,7 @@ import { authenticate, restrict } from "./../auth/verifyToken.js";
 const router = express.Router({ mergeParams: true });
 
 router
-  .route("/")
+  .route("/home")
   .get(getAllReviews)
   .post(authenticate, restrict(["patient"]), createReview);
 

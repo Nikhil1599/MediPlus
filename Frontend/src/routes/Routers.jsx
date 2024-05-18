@@ -10,6 +10,7 @@ import Dashboard from "../Dashboard/doctor-account/dashboard";
 
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import DoctorSignup from "../pages/Doctors/Doctor_Signup";
 
 const Routers = () => {
   return (
@@ -20,6 +21,7 @@ const Routers = () => {
       <Route path="/doctors/:id" element={<DoctorsDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Signup />} />
+      <Route path="/doctors_signup" element={<DoctorSignup />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/services" element={<Services />} />
       <Route

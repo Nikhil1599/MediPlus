@@ -14,6 +14,7 @@ export const authenticate = async (req, res, next) => {
   }
 
   try {
+    //console.log(authToken)
     const token = authToken.split(" ")[1];
     //verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
@@ -26,25 +27,26 @@ export const authenticate = async (req, res, next) => {
       return res.status(401).json({ message: "Token is expired" });
     }
     return res.status(401).json({ success: false, message: "Invalid Token" });
+    console.log(err)
   }
 };
 
 export const restrict = (roles) => async (req, res, next) => {
   const userId = req.userId;
 
-  let user;
+  let users;
 
   const patient = await User.findById(userId);
   const doctor = await Doctor.findById(userId);
 
   if (patient) {
-    user = patient;
+    users = patient;
   }
   if (doctor) {
-    user = doctor;
+    users = doctor;
   }
 
-  if (!roles.includes(user.role)) {
+  if (!roles.includes(users.role)) {
     return res
       .status(401)
       .json({ success: false, message: "You are not authorized" });

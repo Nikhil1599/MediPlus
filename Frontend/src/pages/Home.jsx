@@ -16,8 +16,15 @@ import ServicesList from "../components/Services/ServicesList";
 import DoctorsList from "../components/Doctors/DoctorsList";
 import FaqList from "../components/Faq/FaqList";
 import Testimonials from "../components/Testimonial/Testimonials";
+import { BASE_URL } from "../config";
+import userGetReview from "../hook/useFetchData";
 
 const Home = () => {
+  const { data: review, loading, error } = userGetReview(`${BASE_URL}/home`);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  console.log(review);
   return (
     <>
       {/* // ======================== Main Section======================== */}

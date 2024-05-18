@@ -3,11 +3,11 @@ import Doctor from "../models/DoctorSchema.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
-const generateToken = (user) => {
+const generateToken = user => {
   return jwt.sign(
     { id: user._id, role: user.role },
     process.env.JWT_SECRET_KEY,
-    { expiresIn: "15d" }
+    { expiresIn: '15d' }
   );
 };
 
@@ -15,9 +15,9 @@ export const register = async (req, res) => {
   const { name, password, email, role, photo, gender } = req.body;
   try {
     let user = null;
-    if (role === "patient") {
+    if (role === 'patient') {
       user = await User.findOne({ email });
-    } else if (role === "doctor") {
+    } else if (role === 'doctor') {
       user = await Doctor.findOne({ email });
     }
 
@@ -30,7 +30,7 @@ export const register = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
 
-    if (role === "patient") {
+    if (role === 'patient') {
       user = new User({
         name,
         email,
@@ -40,7 +40,7 @@ export const register = async (req, res) => {
         role,
       });
     }
-    if (role === "doctor") {
+    if (role === 'doctor') {
       user = new Doctor({
         name,
         email,
@@ -100,7 +100,7 @@ export const login = async (req, res) => {
       message: "Successfully login",
       token,
       data: { ...rest },
-      role,
+      role
     });
   } catch (err) {
     res.status(500).json({ status: false, message: "Failed to login" });

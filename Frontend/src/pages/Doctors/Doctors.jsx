@@ -1,8 +1,32 @@
 import DoctorCard from "../../components/Doctors/DoctorCard";
-import { doctors } from "../../assets/data/doctors";
 import Testimonials from "../../components/Testimonial/Testimonials";
+import { BASE_URL } from "../../config";
+import useFetchData from "../../hook/useFetchData";
+import Loader from "../../components/Loader/loading";
+import Error from "../../components/Error/Error";
+import { useEffect, useState } from "react";
 
 const Doctors = () => {
+  const [query, setQuery] = useState("");
+  const [debounceQuery, setDebounceQuery] = useState("");
+
+  const handleSearch = () => {
+    setQuery(query.trim());
+    console.log("handle search");
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebounceQuery(query);
+    }, 700);
+    return () => clearTimeout(timeout);
+  }, [query]);
+
+  const {
+    data: doctors,
+    loading,
+    error,
+  } = useFetchData(`${BASE_URL}/doctors?query=${debounceQuery}`);
   return (
     <>
       <section className="bg-[#fff9ea]">
@@ -16,9 +40,14 @@ const Doctors = () => {
               type="search"
               className="py-4 pl-4 pr-2 bg-transparent w-full focus:outline-none
           cursor-pointer placeholder:text-textColor"
-              placeholder="Search Doctor, Hospital, Specialist"
+              placeholder="Search doctor by name or specifications"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
-            <button className="btn mt-0 rounded-[0px] rounded-r-md">
+            <button
+              className="btn mt-0 rounded-[0px] rounded-r-md"
+              onClick={handleSearch}
+            >
               Search
             </button>
           </div>
@@ -26,10 +55,16 @@ const Doctors = () => {
       </section>
 
       <section>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {doctors.map((doctor) => (
-            <DoctorCard key={doctor.id} doctor={doctor} />
-          ))}
+        <div className="container">
+          {loading && <Loader />}
+          {error && <Error />}
+          {!loading && !error && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+              {doctors.map((doctor) => (
+                <DoctorCard key={doctor.id} doctor={doctor} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

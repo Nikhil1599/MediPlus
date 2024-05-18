@@ -1,5 +1,6 @@
 import User from "../models/UserSchema.js";
 import Booking from "../models/BookingSchema.js";
+import Doctor from "../models/DoctorSchema.js";
 
 export const updateUser = async (req, res) => {
   const id = req.params.id;
@@ -85,15 +86,18 @@ export const getUserProfile = async (req, res) => {
         .status(404)
         .json({ success: false, message: "User not found" });
     }
-    const [password, ...rest] = user._doc;
+
+    // Destructuring user object to extract necessary fields
+    const { ...rest } = user._doc;
 
     res.status(200).json({
       success: true,
-      message: "Profile info is getting",
+      message: "Profile info retrieved successfully",
       data: { ...rest },
     });
   } catch (err) {
-    res.status(404).json({ success: false, message: "Something went wrong.." });
+    res.status(500).json({ success: false, message: "Unable to get profile. Something went wrong.." });
+    console.log(err);
   }
 };
 
@@ -117,7 +121,8 @@ export const getMyAppointments = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: "Something went wrong..",
+      message: "Unable to get appointment | Something went wrong..",
     });
+    console.log(err)
   }
 };
