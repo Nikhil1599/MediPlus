@@ -8,7 +8,7 @@ const DoctorCard = ({ doctor }) => {
     doctor;
 
   return (
-    <div className="p-3 lg:p-5">
+    <div className="p-3 lg:p-5 border border-gray-300 rounded-lg">
       <div>
         <img src={photo} className="w-full rounded-2xl" alt="" />
       </div>

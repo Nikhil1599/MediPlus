@@ -1,5 +1,5 @@
 import { useEffect, useRef, useContext } from "react";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/Blaka.png";
 import { NavLink, Link } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
 import { authContext } from "../../context/AuthContext.jsx";
@@ -54,20 +54,20 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/*==================LOGO===================== */}
           <div>
-            <img src={logo} alt="" />
+            <img src={logo} alt="Logo" />
           </div>
 
           {/* ==============MENU==================== */}
           <div className="navigation" ref={menuRef}>
-            <ul className="menu flex item-center gap-[2.7rem]">
+            <ul className="menu flex items-center gap-[2.7rem]">
               {navLinks.map((link, index) => (
                 <li key={index}>
                   <NavLink
                     to={link.path}
                     className={(navClass) =>
                       navClass.isActive
-                        ? "text-primaryColor text-[16px] leading-7 font-[600]"
-                        : "text-textColor text-[16px] leading-7 font-[500] hover:text-primaryColor"
+                        ? "text-red-600 text-[16px] leading-7 font-[600]"
+                        : "text-textColor text-[16px] leading-7 font-[500] hover:text-red-600"
                     }
                   >
                     {link.display}
@@ -91,16 +91,16 @@ const Header = () => {
                     <img
                       src={user?.photo}
                       className="w-full rounded-full"
-                      alt=""
-                    ></img>
+                      alt="User"
+                    />
                   </figure>
                 </Link>
               </div>
             ) : (
               <Link to="/login">
                 <button
-                  className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center
-              justify-center rounded-[50px]"
+                  className="bg-red-600 py-2 px-6 text-white font-[600] h-[44px] flex items-center
+              justify-center rounded-lg"
                 >
                   Login
                 </button>
@@ -108,7 +108,7 @@ const Header = () => {
             )}
 
             <span className="md:hidden" onClick={toggleMenu}>
-              <BiMenu className="w-6 h-6 "></BiMenu>
+              <BiMenu className="w-6 h-6" />
             </span>
           </div>
         </div>
@@ -116,4 +116,5 @@ const Header = () => {
     </header>
   );
 };
+
 export default Header;

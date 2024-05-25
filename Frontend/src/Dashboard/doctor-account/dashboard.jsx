@@ -13,7 +13,6 @@ const Dashboard = () => {
   const { data, loading, error } = userGetProfile(
     `${BASE_URL}/doctors/profile/me`
   );
-  console.log(data);
   const [tab, setTab] = useState("overview");
 
   return (
@@ -24,7 +23,7 @@ const Dashboard = () => {
 
         {!loading && !error && (
           <div className="grid lg:grid-cols-3 gap-[30px] lg:gap-[50px]">
-            <Tabs tab={tab} setTab={setTab} />
+            <Tabs tab={tab} setTab={setTab} doctorId={data._id} />
 
             <div className="lg:col-span-2">
               {data.isApproved === "pending" && (

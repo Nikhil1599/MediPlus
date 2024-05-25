@@ -1,4 +1,3 @@
-import React from "react";
 import heroImage01 from "../assets/images/hero-img01.png";
 import heroImage02 from "../assets/images/hero-img02.png";
 import heroImage03 from "../assets/images/hero-img03.png";
@@ -16,15 +15,8 @@ import ServicesList from "../components/Services/ServicesList";
 import DoctorsList from "../components/Doctors/DoctorsList";
 import FaqList from "../components/Faq/FaqList";
 import Testimonials from "../components/Testimonial/Testimonials";
-import { BASE_URL } from "../config";
-import userGetReview from "../hook/useFetchData";
 
 const Home = () => {
-  const { data: review, loading, error } = userGetReview(`${BASE_URL}/home`);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  console.log(review);
   return (
     <>
       {/* // ======================== Main Section======================== */}
@@ -46,7 +38,9 @@ const Home = () => {
                   nobis nam consequatur, debitis ratione dolorem voluptatum ad
                   laudantium. Quis eius hic aspernatur quaerat minus.
                 </p>
-                <button className="btn">Book an Appointment</button>
+                <button className="btn bg-red-600 rounded-lg">
+                  Book an Appointment
+                </button>
               </div>
 
               {/* ================MAIN COUNTER================= */}
@@ -87,11 +81,15 @@ const Home = () => {
             {/* =====================Doctors Images==================s */}
             <div className="flex gap-[30px] justify-end">
               <div>
-                <img className="w-full" src={heroImage01} alt="" />
+                <img className="w-full" src={heroImage01} alt="Hero 1" />
               </div>
               <div className="mt-[30px]">
-                <img className="w-full mb-[30px]" src={heroImage02} alt="" />
-                <img className="w-full" src={heroImage03} alt="" />
+                <img
+                  className="w-full mb-[30px]"
+                  src={heroImage02}
+                  alt="Hero 2"
+                />
+                <img className="w-full" src={heroImage03} alt="Hero 3" />
               </div>
             </div>
           </div>
@@ -117,7 +115,7 @@ const Home = () => {
             {/* icon 1 */}
             <div className="py-[30px] px-5">
               <div className="flex items-center justify-center">
-                <img src={icon01} alt="" />
+                <img src={icon01} alt="Icon 1" />
               </div>
 
               <div className="mt-[30px]">
@@ -131,7 +129,7 @@ const Home = () => {
                 <Link
                   to="/doctors"
                   className="w-[44px] h-[44px] rounded-full border border-solid 
-            border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor
+            border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-red-600
             hover:border-none"
                 >
                   <BsArrowRight className="group-hover:text-white w-6 h-5" />
@@ -142,7 +140,7 @@ const Home = () => {
             {/* icon 2 */}
             <div className="py-[30px] px-5">
               <div className="flex items-center justify-center">
-                <img src={icon02} alt="" />
+                <img src={icon02} alt="Icon 2" />
               </div>
 
               <div className="mt-[30px]">
@@ -156,7 +154,7 @@ const Home = () => {
                 <Link
                   to="/doctors"
                   className="w-[44px] h-[44px] rounded-full border border-solid 
-            border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor
+            border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-red-600
             hover:border-none"
                 >
                   <BsArrowRight className="group-hover:text-white w-6 h-5" />
@@ -167,7 +165,7 @@ const Home = () => {
             {/* icon 3 */}
             <div className="py-[30px] px-5">
               <div className="flex items-center justify-center">
-                <img src={icon03} alt="" />
+                <img src={icon03} alt="Icon 3" />
               </div>
 
               <div className="mt-[30px]">
@@ -181,7 +179,7 @@ const Home = () => {
                 <Link
                   to="/doctors"
                   className="w-[44px] h-[44px] rounded-full border border-solid 
-            border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor
+            border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-red-600
             hover:border-none"
                 >
                   <BsArrowRight className="group-hover:text-white w-6 h-5" />
@@ -200,7 +198,6 @@ const Home = () => {
           <div className="xl:w-[470px] mx-auto">
             <h2 className="heading text-center">Services Available</h2>
             <p className="text_para text-center">
-              {" "}
               World-class medical care for everyone. Out health system offers is
               unmatched.
             </p>
@@ -235,7 +232,7 @@ const Home = () => {
             </div>
             {/* Featured img */}
             <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
-              <img src={featureImg} className="w-3/4" alt="" />
+              <img src={featureImg} className="w-3/4" alt="Feature" />
               <div
                 className="w-[150px] lg:w-[248px] bg-white absolute bottom-[50px] left-0 md:bottom-[100px] 
             md:left-5 z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]"
@@ -259,7 +256,7 @@ const Home = () => {
                     className="w-5 h-5 lg:w-[34px] lg:h-[34px] flex items-center justify-center bg-yellowColor 
                 rounded py-1 px-[6px] lg:py-3 lg:px-[9px]"
                   >
-                    <img src={videoIcon} alt="" />
+                    <img src={videoIcon} alt="Video" />
                   </span>
                 </div>
 
@@ -270,7 +267,7 @@ const Home = () => {
                   Consultation
                 </div>
                 <div className="flex items-center gap-[6px] lg:gap-[10px] mt-2 lg:mt-[18px]">
-                  <img src={avatarIcon} alt="" />
+                  <img src={avatarIcon} alt="Avatar" />
                   <h4
                     className="text-[10px] leading-3 lg:text-[16px] lg:leading-[22px] font-[700]
                 text-headingColor"
@@ -303,7 +300,7 @@ const Home = () => {
         <div className="container">
           <div className="flex justify-between gap-[50px] lg:gap-0">
             <div className="w-1/2 hidden md:block">
-              <img src={faqImg} alt="" />
+              <img src={faqImg} alt="FAQ" />
             </div>
             <div className="w-full md:w-1/2">
               <h2 className="heading">Most frequently asked questions</h2>
@@ -329,4 +326,5 @@ const Home = () => {
     </>
   );
 };
+
 export default Home;

@@ -14,7 +14,7 @@ const Profile = ({ DoctorData }) => {
     bio: "",
     gender: "",
     specialization: "",
-    ticketPrice: "",
+    ticketPrice: 0,
     qualifications: [],
     experiences: [],
     timeSlots: [],
