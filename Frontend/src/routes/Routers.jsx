@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Services from "../pages/Services";
 import Signup from "../pages/Signup";
@@ -7,8 +8,6 @@ import Doctors from "../pages/Doctors/Doctors";
 import DoctorsDetails from "../pages/Doctors/DoctorsDetails";
 import MyAccount from "../Dashboard/user-account/MyAccount";
 import Dashboard from "../Dashboard/doctor-account/dashboard";
-
-import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import DoctorSignup from "../pages/Doctors/Doctor_Signup";
 

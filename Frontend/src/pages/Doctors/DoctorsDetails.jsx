@@ -54,7 +54,7 @@ const DoctorsDetails = () => {
                   {specialization}
                 </span>
                 <h3 className="text-headingColor text-[22px] leading-9 mt-3 font-bold">
-                  {name}
+                  Dr. {name}
                 </h3>
                 <div className="flex items-center gap-[6px]">
                   <span
@@ -97,6 +97,7 @@ const DoctorsDetails = () => {
             <div className="mt-[50px]">
               {tab === "about" && (
                 <DoctorAbout
+                  name={name}
                   about={about}
                   qualifications={qualifications}
                   experiences={experiences}
@@ -108,7 +109,7 @@ const DoctorsDetails = () => {
             </div>
           </div>
           <div>
-            <SidePanel timeSlots={timeSlots} userData={doctor} />
+            <SidePanel userData={doctor} />
           </div>
         </div>
       </div>

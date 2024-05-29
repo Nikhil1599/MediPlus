@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
+// eslint-disable-next-line react/prop-types
 const FaqItems = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleAccordion = () => {

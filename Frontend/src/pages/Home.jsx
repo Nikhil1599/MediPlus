@@ -38,7 +38,7 @@ const Home = () => {
                   nobis nam consequatur, debitis ratione dolorem voluptatum ad
                   laudantium. Quis eius hic aspernatur quaerat minus.
                 </p>
-                <button className="btn bg-red-600 rounded-lg">
+                <button className="btn bg-primaryColor rounded-lg">
                   Book an Appointment
                 </button>
               </div>
@@ -227,7 +227,7 @@ const Home = () => {
                 </li>
               </ul>
               <Link to="/">
-                <button className="btn">Learn More</button>
+                <button className="btn rounded-lg">Learn More</button>
               </Link>
             </div>
             {/* Featured img */}

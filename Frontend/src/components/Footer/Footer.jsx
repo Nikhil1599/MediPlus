@@ -1,6 +1,5 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/Blaka.png";
 import { RiLinkedinFill } from "react-icons/ri";
 import {
   AiFillYoutube,
@@ -93,7 +92,7 @@ const Footer = () => {
                   to={link.path}
                   key={index}
                   className="w-9 h-9 border border-solid border-[#181A1E] rounded-full 
-                flex items-center justify-center hover:bg-primaryColor hover:border-none hover:"
+                flex items-center justify-center hover:bg-primaryColor hover:border-none hover:text-white"
                 >
                   {link.icon}
                 </Link>
